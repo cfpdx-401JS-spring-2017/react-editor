@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+
+label {
+  margin: 15px;
+}
+
+input {
+  margin: 10px;
+  border-radius: 5%;
+  height: 20px;
+}
+
+.App-logo {
+  animation: spin infinite 30s linear;
+  height: 100px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.App-header {
+  background-color: #222;
+  height: 190px;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+.App-header h4 {
+  margin: 5px;
+}
+
+.name-input {
+  margin-top: 25px;
+}
+
+.box-settings {
+  height: 425px;
+  width: 425px;
+  margin: 30px auto;
+  border: solid 2px turquoise;
+  border-radius: 25%;
+}
+
+.color-box {
+  animation: spin infinite 0s linear;
+  margin: 13% auto;
+  border: solid 2px white;
+}
+
+@keyframes spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
