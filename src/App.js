@@ -66,7 +66,7 @@ class App extends Component {
         <input type="range"
           value={size}
           onChange={event => {
-            this.changeBackgroundColor(adviceBackground);
+            this.changeBackgroundColor('adviceBackground');
             this.changeFontSize(event.target.value);
             this.changeFontFamily([fontFamily])
           }} />
