@@ -8,7 +8,9 @@ class App extends Component {
 
     this.state = {
       message: 'Welcome to Hops Music!',
-      color: '#9F0E11'
+      color: '#9F0E11',
+      fontSize: '20px',
+      backgroundImage: '/public/pom.jpg'
     };
   }
 
@@ -16,11 +18,15 @@ class App extends Component {
     this.setState({ color });
   }
 
+  changeFontSize(fontSize) {
+    this.setState({ fontSize });
+  }
+
   changeMessage(message) {
     this.setState({ message });
   }
 
-  changePhoto(photo) {
+  addPhoto(photo) {
     this.setState({ photo });
   }
 
@@ -41,18 +47,23 @@ class App extends Component {
               onChange={e => this.changeColor(e.target.value)} />
           </label></p>
           <p><label>
-            Message: 
-            <input 
-            type="message"
-            value={this.state.message}
-            onChange={e => this.changeMessage(e.target.value)} />
+            Message:
+            <input
+              type="message"
+              value={this.state.message}
+              onChange={e => this.changeMessage(e.target.value)} />
+          </label></p>
+          <p><label>
+            Font Size:
+            <input
+              type="range"
+              value={this.state.fontSize}
+              onChange={e => this.changeFontSize(e.target.value)} />
           </label></p>
         </div>
-        <div className="display" style={{ color: this.state.color }}>
-          <p className="text">
-            To get started, edit <code>src/App.js</code> and save to reload.
-            {this.state.message}
-          </p>
+        <div className="display" 
+        style={{ color: this.state.color, fontSize: `${this.state.fontsize}px` }} >
+          <p className="text">{this.state.message}</p>
         </div>
       </div>
     );
