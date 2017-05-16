@@ -9,8 +9,10 @@ class App extends Component {
 
     this.state = {
       size: 30,
-      color: '#ccc',
-      backgroundColor: '#A49'
+      color: '#cccccc',
+      headerBackground: '#A49',
+      adviceBackground: '#A49',
+      iconSize: 80
     }
   }
 
@@ -22,9 +24,19 @@ class App extends Component {
     this.setState({ color });
   }
 
-  changeBackgroundColor() {
-    let backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    this.setState({ backgroundColor });
+  changeBackgroundColor(element) {
+    if (element === 'adviceBackground') {
+      let elementColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      this.setState({ adviceBackground: elementColor });
+    } else if (element === 'headerBackground') {
+      let elementColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      this.setState({ headerBackground: elementColor });
+
+    }
+  }
+
+  changeIconSize(iconSize) {
+    this.setState({ iconSize })
   }
 
 
@@ -33,13 +45,14 @@ class App extends Component {
   render() {
     const greeting = 'Welcome';
     const advice = 'Kick it like you mean it';
-    const { size, color, backgroundColor } = this.state;
+    const { size, color, adviceBackground, headerBackground } = this.state;
 
     return (
       <div className="App">
-        <div className="App-header" style={{ backgroundColor }}>
+        <div className="App-header" style={{backgroundColor: headerBackground }}>
           <h2>{greeting}, Get Your React On With Ivy</h2>
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo"
+          />
         </div>
         <p className="App-intro">
 
@@ -47,16 +60,21 @@ class App extends Component {
         <div>size is {size} </div>
         <input type="range"
           value={size}
-          onChange={event => this.changeFontSize(event.target.value)} />
+          onChange={event => {
+            this.changeBackgroundColor(adviceBackground);
+            this.changeFontSize(event.target.value)
+          }} />
         <br />
         <input type="color"
           value={color}
           onChange={event => this.changeColor(event.target.value)} />
         <button
-          onClick={() => this.changeBackgroundColor()}>CLICK ME</button>
+          onClick={() => this.changeBackgroundColor('headerBackground')}>Color Change</button>
+        <br />
         <p style={{
           fontSize: `${size}px`,
-          color: `${color}`
+          color,
+          backgroundColor: adviceBackground
         }}>{advice}</p>
       </div>
     );
