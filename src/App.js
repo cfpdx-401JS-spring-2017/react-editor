@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   changeIconSize(iconSize) {
-
+//add code to resize image by dragging
     this.setState({ iconSize })
   }
 
@@ -80,7 +80,8 @@ class App extends Component {
         <p style={{
           fontSize: `${size}px`,
           color,
-          backgroundColor: adviceBackground
+          backgroundColor: adviceBackground,
+          fontFamily
         }}>{advice}</p>
       </div>
     );
