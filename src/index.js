@@ -5,8 +5,10 @@ import './index.css';
 
 ReactDOM.render(
   <div>
-    <App size="20"/>
-    <App size="30"/>
+    <App />
+    <App />
   </div>,
   document.getElementById('root')
 );
+
+
