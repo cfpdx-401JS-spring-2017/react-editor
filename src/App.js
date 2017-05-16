@@ -26,8 +26,8 @@ class App extends Component {
     this.setState({ message });
   }
 
-  addPhoto(photo) {
-    this.setState({ photo });
+  addPhoto(backgroundImage) {
+    this.setState({ backgroundImage });
   }
 
   render() {
@@ -35,10 +35,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Hops Music: Beta Edition</h2>
+          <h2>Let's Play in React: What do you want to do?</h2>
         </div>
         <div className="settings">
-          <h3>Let's Play in React: What do you want to do?</h3>
+          <h3>Manipulate the fields below:</h3>
           <p><label>
             Color:
             <input
@@ -60,9 +60,20 @@ class App extends Component {
               value={this.state.fontSize}
               onChange={e => this.changeFontSize(e.target.value)} />
           </label></p>
+          <p><label>
+            More Pom:
+            <input
+              type="button"
+              value={this.state.backgroundImage}
+              onChange={e => this.addImage(e.target.value)} />
+          </label></p>
         </div>
         <div className="display" 
-        style={{ color: this.state.color, fontSize: `${this.state.fontSize}px` }} >
+        style={{ 
+          color: this.state.color, 
+          fontSize: `${this.state.fontSize}px`, 
+          backgroundImage: this.state.backgroundImage 
+          }} >
           <p className="text">{this.state.message}</p>
         </div>
       </div>
