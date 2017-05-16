@@ -12,7 +12,7 @@ class App extends Component {
       color: '#aaaaaa',
       height: 300,
       width: 300,
-      shape: 0,
+      shape: 50,
       rotation: 0,
       opacity: 1
     }
@@ -50,7 +50,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt={logo} />
+          <img src={logo} className="App-logo" alt={logo} style={{
+              animation: `spin infinite ${this.state.rotation}s linear`}}/>
           <h4>Welcome to {this.state.message}'s React Editor</h4>
           <label>
             Hi, What's your name?
@@ -93,7 +94,7 @@ class App extends Component {
         </label>
         <label>
           Height
-              <input
+            <input
             type="range"
             min='0'
             max='300'
@@ -102,7 +103,7 @@ class App extends Component {
         </label>
         <label>
           Width
-              <input
+            <input
             type="range"
             min='0'
             max='300'

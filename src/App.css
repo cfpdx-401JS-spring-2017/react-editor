@@ -13,7 +13,7 @@ input {
 }
 
 .App-logo {
-  animation: spin infinite 30s linear;
+  animation: spin infinite 0s linear;
   height: 100px;
   margin-top: 10px;
   text-align: left;
