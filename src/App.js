@@ -12,7 +12,8 @@ class App extends Component {
       color: '#cccccc',
       headerBackground: '#A49',
       adviceBackground: '#A49',
-      iconSize: 80
+      iconSize: 80,
+      fontFamily: ['Georgia', 'Courier', 'Helvetica']
     }
   }
 
@@ -36,20 +37,24 @@ class App extends Component {
   }
 
   changeIconSize(iconSize) {
+
     this.setState({ iconSize })
   }
 
+  changeFontFamily([fontFamily]) {
+    this.setState([ [fontFamily] ])
+  }
 
 
 
   render() {
     const greeting = 'Welcome';
     const advice = 'Kick it like you mean it';
-    const { size, color, adviceBackground, headerBackground } = this.state;
+    const { size, color, adviceBackground, headerBackground, fontFamily } = this.state;
 
     return (
       <div className="App">
-        <div className="App-header" style={{backgroundColor: headerBackground }}>
+        <div className="App-header" style={{ backgroundColor: headerBackground }}>
           <h2>{greeting}, Get Your React On With Ivy</h2>
           <img src={logo} className="App-logo" alt="logo"
           />
@@ -62,7 +67,8 @@ class App extends Component {
           value={size}
           onChange={event => {
             this.changeBackgroundColor(adviceBackground);
-            this.changeFontSize(event.target.value)
+            this.changeFontSize(event.target.value);
+            this.changeFontFamily([fontFamily])
           }} />
         <br />
         <input type="color"
