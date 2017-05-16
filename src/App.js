@@ -62,7 +62,7 @@ class App extends Component {
           </label></p>
         </div>
         <div className="display" 
-        style={{ color: this.state.color, fontSize: `${this.state.fontsize}px` }} >
+        style={{ color: this.state.color, fontSize: `${this.state.fontSize}px` }} >
           <p className="text">{this.state.message}</p>
         </div>
       </div>
