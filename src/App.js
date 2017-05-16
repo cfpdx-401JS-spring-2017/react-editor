@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -10,7 +11,8 @@ class App extends Component {
       message: 'Welcome to Hops Music!',
       color: '#9F0E11',
       fontSize: '20px',
-      backgroundImage: '/public/pom.jpg'
+      display: 'none',
+      image: 'https://s-media-cache-ak0.pinimg.com/736x/2f/2b/b6/2f2bb64235aa5ae8564168415e6d3a11.jpg'
     };
   }
 
@@ -26,8 +28,10 @@ class App extends Component {
     this.setState({ message });
   }
 
-  addPhoto(backgroundImage) {
-    this.setState({ backgroundImage });
+  addImage() {
+    let displayState = this.state.display === 'none' ? 'inline-block' : 'none'
+    console.log(displayState);
+    this.setState({ display: displayState });
   }
 
   render() {
@@ -61,20 +65,20 @@ class App extends Component {
               onChange={e => this.changeFontSize(e.target.value)} />
           </label></p>
           <p><label>
-            More Pom:
+            Toggle Pom:
             <input
               type="button"
-              value={this.state.backgroundImage}
-              onChange={e => this.addImage(e.target.value)} />
+              value="Do You Like Poms? Press!"
+              onClick={e => this.addImage()} />
           </label></p>
         </div>
         <div className="display" 
         style={{ 
           color: this.state.color, 
-          fontSize: `${this.state.fontSize}px`, 
-          backgroundImage: this.state.backgroundImage 
+          fontSize: `${this.state.fontSize}px`
           }} >
           <p className="text">{this.state.message}</p>
+          <div className="image" style={{ display: this.state.display }}><img src={this.state.image} /></div>
         </div>
       </div>
     );
