@@ -1,0 +1,24 @@
+body {
+  background-color: #ddd;
+}
+
+.App {
+  width: 650px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.App-header {
+  text-align: center;
+}
+
+input {
+  margin: 1em 0;
+  display: block;
+}
+
+p {
+  margin: 5px 0;
+  text-align: center;
+}
