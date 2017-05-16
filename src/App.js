@@ -16,6 +16,14 @@ class App extends Component {
     this.setState({ color });
   }
 
+  changeMessage(message) {
+    this.setState({ message });
+  }
+
+  changePhoto(photo) {
+    this.setState({ photo });
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,17 +33,25 @@ class App extends Component {
         </div>
         <div className="settings">
           <h3>Let's Play in React: What do you want to do?</h3>
-          <label>
+          <p><label>
             Color:
             <input
               type="color"
               value={this.state.color}
               onChange={e => this.changeColor(e.target.value)} />
-          </label>
+          </label></p>
+          <p><label>
+            Message: 
+            <input 
+            type="message"
+            value={this.state.message}
+            onChange={e => this.changeMessage(e.target.value)} />
+          </label></p>
         </div>
         <div className="display" style={{ color: this.state.color }}>
           <p className="text">
             To get started, edit <code>src/App.js</code> and save to reload.
+            {this.state.message}
           </p>
         </div>
       </div>
