@@ -79,7 +79,7 @@ class App extends Component {
           }} >
           Fortune: {message} </p>
         <br />
-        <form>
+        <form className="fortune_form">
           <input type="text"
             value={message}
             placeholder="Predict My Future" />
@@ -101,14 +101,15 @@ class App extends Component {
           }} />
         <br />
 
-        <button style={{
+        <button className="header_color_button" style={{
           fontSize: '15px',
           borderRadius: '5px',
           backgroundColor:'white'
         }}
           onClick={() => this.changeBackgroundColor('headerBackground')}>Click To Change Header Color</button>
         <br />
-        <input type="color"
+        <input className="font_color_picker"
+        type="color"
           value={color}
           onChange={event => this.changeColor(event.target.value)} />
 
