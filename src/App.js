@@ -15,7 +15,8 @@ class App extends Component {
       iconSize: 80,
       message: '',
       messageSize: 40,
-      fontFamily: ['Georgia', 'Courier', 'Helvetica']
+      fontFamily: ['Georgia', 'Courier', 'Helvetica'],
+      currentFont: 'Helvetica'
     }
   }
 
@@ -47,8 +48,16 @@ class App extends Component {
     this.setState({ iconSize })
   }
 
-  changeFontFamily(fontFamily) {
-    this.setState({fontFamily})
+  changeCurrentFont() {
+    const currentFont = this.state.currentFont;
+    const fontFamily = this.state.fontFamily;
+    const currentIndex = fontFamily.findIndex(font => font === currentFont);
+    let nextIndex = currentIndex + 1;
+    if (nextIndex > fontFamily.length) {
+      nextIndex = 0;
+    }
+    let nextFont = fontFamily[nextIndex];
+    this.setState({ currentFont: nextFont });
   }
 
   changeMessage(message) {
@@ -86,7 +95,7 @@ class App extends Component {
             type="submit"
             value="submit"
             onSubmit={event => {
-              this.changeMessage(event.target.value);{/*Q: not sure why this is not working*/}
+              this.changeMessage(event.target.value); {/*Q: not sure why this is not working*/ }
             }} />
         </form>
         <p className="App-intro"
@@ -116,12 +125,13 @@ class App extends Component {
         }}
           onClick={() => this.changeBackgroundColor('headerBackground')}>Click To Change Header Color</button>
         <br />
-         <button className="font_family_button" style={{
+        <button className="font_family_button" style={{
+          fontFamily: this.state.currentFont,
           fontSize: '15px',
           borderRadius: '5px',
           backgroundColor: 'white'
         }}
-          onClick={fontFamily.map((font, i) => {font})}>Click To Change Font Family</button> {/*this is intended to map through and change font family upon click*/}
+          onClick={() => this.changeCurrentFont()}>Click To Change Font Family</button> {/*this is intended to map through and change font family upon click*/}
         <br />
         <div>Pick A Font Color:
         <input className="font_color_picker"
