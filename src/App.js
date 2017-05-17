@@ -47,8 +47,8 @@ class App extends Component {
     this.setState({ iconSize })
   }
 
-  changeFontFamily([fontFamily]) {
-    this.setState([[fontFamily]])
+  changeFontFamily(fontFamily) {
+    this.setState({fontFamily})
   }
 
   changeMessage(message) {
@@ -82,21 +82,22 @@ class App extends Component {
               fontSize: '15px',
               borderRadius: '5px',
               backgroundColor: 'white'
-            }} type="submit"
+            }}
+            type="submit"
             value="submit"
             onSubmit={event => {
-              this.changeMessage(event.target.value);
+              this.changeMessage(event.target.value);{/*Q: not sure why this is not working*/}
             }} />
         </form>
         <p className="App-intro"
-            style={{
-              fontSize: `${messageSize}px`,
-              color,
-              backgroundColor: adviceBackground,
-              fontFamily: "Georgia"
-            }} >
-            Fortune: {message} </p>
-          <br />
+          style={{
+            fontSize: `${messageSize}px`,
+            color,
+            backgroundColor: adviceBackground,
+            fontFamily: "Georgia"
+          }} >
+          Fortune: {message} </p> {/*Q: why doesn't message render?*/}
+        <br />
         <div>FONT SIZE IS {size} <br /> COLOR IS {adviceBackground} </div>
         <input type="range"
           value={size}
@@ -114,6 +115,13 @@ class App extends Component {
           backgroundColor: 'white'
         }}
           onClick={() => this.changeBackgroundColor('headerBackground')}>Click To Change Header Color</button>
+        <br />
+         <button className="font_family_button" style={{
+          fontSize: '15px',
+          borderRadius: '5px',
+          backgroundColor: 'white'
+        }}
+          onClick={fontFamily.map((font, i) => {font})}>Click To Change Font Family</button> {/*this is intended to map through and change font family upon click*/}
         <br />
         <div>Pick A Font Color:
         <input className="font_color_picker"
