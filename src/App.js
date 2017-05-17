@@ -56,7 +56,6 @@ class App extends Component {
   }
 
 
-
   render() {
     const greeting = 'Welcome';
     const advice = 'Kick it like you mean it';
@@ -70,27 +69,35 @@ class App extends Component {
           />
         </div>
         <br />
-        <p className="App-intro"
-          style={{
-            fontSize: `${messageSize}px`,
-            color,
-            backgroundColor: adviceBackground,
-            fontFamily: "Georgia"
-          }} >
-          Fortune: {message} </p>
-        <br />
         <form className="fortune_form">
-          <input type="text"
+          <input style={{
+            fontSize: '15px',
+            borderRadius: '5px',
+            backgroundColor: 'white'
+          }} type="text"
             value={message}
             placeholder="Predict My Future" />
-          <input type="submit"
+          <input
+            style={{
+              fontSize: '15px',
+              borderRadius: '5px',
+              backgroundColor: 'white'
+            }} type="submit"
             value="submit"
             onSubmit={event => {
               this.changeMessage(event.target.value);
             }} />
         </form>
-        <br />
-        <div>FONT SIZE IS {size} <br/> COLOR IS {adviceBackground} </div>
+        <p className="App-intro"
+            style={{
+              fontSize: `${messageSize}px`,
+              color,
+              backgroundColor: adviceBackground,
+              fontFamily: "Georgia"
+            }} >
+            Fortune: {message} </p>
+          <br />
+        <div>FONT SIZE IS {size} <br /> COLOR IS {adviceBackground} </div>
         <input type="range"
           value={size}
           onChange={event => {
@@ -104,14 +111,16 @@ class App extends Component {
         <button className="header_color_button" style={{
           fontSize: '15px',
           borderRadius: '5px',
-          backgroundColor:'white'
+          backgroundColor: 'white'
         }}
           onClick={() => this.changeBackgroundColor('headerBackground')}>Click To Change Header Color</button>
         <br />
+        <div>Pick A Font Color:
         <input className="font_color_picker"
-        type="color"
-          value={color}
-          onChange={event => this.changeColor(event.target.value)} />
+            type="color"
+            value={color}
+            onChange={event => this.changeColor(event.target.value)} />
+        </div>
 
         <br />
         <p style={{
