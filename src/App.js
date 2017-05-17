@@ -103,9 +103,9 @@ class App extends Component {
             fontSize: `${messageSize}px`,
             color,
             backgroundColor: adviceBackground,
-            fontFamily: "Georgia"
+            fontFamily: this.state.currentFont
           }} >
-          Fortune: {message} </p> {/*Q: why doesn't message render?*/}
+          Fortune: {this.state.message} </p> {/*Q: why doesn't message render?*/}
         <br />
         <div>FONT SIZE IS {size} <br /> COLOR IS {adviceBackground} </div>
         <input type="range"
@@ -145,7 +145,7 @@ class App extends Component {
           fontSize: `${size}px`,
           color,
           backgroundColor: adviceBackground,
-          fontFamily
+          fontFamily: this.state.currentFont
         }}>{advice}</p>
       </div>
     );
