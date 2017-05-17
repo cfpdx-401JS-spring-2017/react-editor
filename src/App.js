@@ -4,21 +4,27 @@ import './App.css';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      size: 30,
+      size: 75,
       color: '#cccccc',
-      headerBackground: '#A49',
+      headerBackground: '#A81',
       adviceBackground: '#A49',
       iconSize: 80,
+      message: '',
+      messageSize: 40,
       fontFamily: ['Georgia', 'Courier', 'Helvetica']
     }
   }
 
-  changeFontSize(size) {
+  changeAdviceSize(size) {
     this.setState({ size });
+  }
+
+  changeMesageSize(messageSize) {
+    this.setState({ messageSize });
   }
 
   changeColor(color) {
@@ -37,12 +43,16 @@ class App extends Component {
   }
 
   changeIconSize(iconSize) {
-//add code to resize image by dragging
+    //add code to resize image by dragging
     this.setState({ iconSize })
   }
 
   changeFontFamily([fontFamily]) {
-    this.setState([ [fontFamily] ])
+    this.setState([[fontFamily]])
+  }
+
+  changeMessage(message) {
+    this.setState({ message })
   }
 
 
@@ -50,32 +60,58 @@ class App extends Component {
   render() {
     const greeting = 'Welcome';
     const advice = 'Kick it like you mean it';
-    const { size, color, adviceBackground, headerBackground, fontFamily } = this.state;
+    const { size, color, adviceBackground, headerBackground, fontFamily, message, messageSize } = this.state;
 
     return (
       <div className="App">
         <div className="App-header" style={{ backgroundColor: headerBackground }}>
-          <h2>{greeting}, Get Your React On With Ivy</h2>
+          <h2>{greeting} To Ivy's React Sandbox</h2>
           <img src={logo} className="App-logo" alt="logo"
           />
         </div>
-        <p className="App-intro">
-
-        </p>
-        <div>size is {size} </div>
+        <br />
+        <p className="App-intro"
+          style={{
+            fontSize: `${messageSize}px`,
+            color,
+            backgroundColor: adviceBackground,
+            fontFamily: "Georgia"
+          }} >
+          Fortune: {message} </p>
+        <br />
+        <form>
+          <input type="text"
+            value={message}
+            placeholder="Predict My Future" />
+          <input type="submit"
+            value="submit"
+            onSubmit={event => {
+              this.changeMessage(event.target.value);
+            }} />
+        </form>
+        <br />
+        <div>FONT SIZE IS {size} <br/> COLOR IS {adviceBackground} </div>
         <input type="range"
           value={size}
           onChange={event => {
             this.changeBackgroundColor('adviceBackground');
-            this.changeFontSize(event.target.value);
-            this.changeFontFamily([fontFamily])
+            this.changeAdviceSize(event.target.value);
+            this.changeMesageSize(event.target.value);
+            {/*this.changeFontFamily([fontFamily])*/ }
           }} />
+        <br />
+
+        <button style={{
+          fontSize: '15px',
+          borderRadius: '5px',
+          backgroundColor:'white'
+        }}
+          onClick={() => this.changeBackgroundColor('headerBackground')}>Click To Change Header Color</button>
         <br />
         <input type="color"
           value={color}
           onChange={event => this.changeColor(event.target.value)} />
-        <button
-          onClick={() => this.changeBackgroundColor('headerBackground')}>Color Change</button>
+
         <br />
         <p style={{
           fontSize: `${size}px`,
