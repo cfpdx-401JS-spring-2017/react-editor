@@ -15,7 +15,7 @@ You should aim to add 5-10 different settings the user can change.
 For this assignment:
  
 * You can stick with a single `App` component
-* Initialize state using `this.state = {}` in the constructor (don't forget to call `super(props)`
+* Initialize state using `this.state = {}` in the constructor (don't forget to call `super()`
 * Write JSX in the `render` method of the `App` component
   * Use `this.state.prop` to access state values
   * Use `e => { this.someMethod(e.target.value) }` (or whatever you need from the event object) to call
