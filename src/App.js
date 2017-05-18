@@ -68,7 +68,7 @@ class App extends Component {
   render() {
     const greeting = 'Welcome';
     const advice = 'Kick it like you mean it';
-    const { size, color, adviceBackground, headerBackground, fontFamily, message, messageSize } = this.state;
+    const { size, color, adviceBackground, headerBackground, message, messageSize } = this.state;
 
     return (
       <div className="App">
@@ -78,25 +78,28 @@ class App extends Component {
           />
         </div>
         <br />
-        <form className="fortune_form">
-          <input style={{
-            fontSize: '15px',
-            borderRadius: '5px',
-            backgroundColor: 'white'
-          }} type="text"
-            value={message}
-            placeholder="Predict My Future" />
-          <input
-            style={{
+        <form onSubmit={event => {
+          event.preventDefault();
+          this.changeMessage(event.target.elements.fortune.value); 
+        }}
+          className = "fortune_form" >
+            <input style={{
               fontSize: '15px',
               borderRadius: '5px',
               backgroundColor: 'white'
             }}
-            type="submit"
-            value="submit"
-            onSubmit={event => {
-              this.changeMessage(event.target.value); {/*Q: not sure why this is not working*/ }
-            }} />
+              name="fortune"
+              type="text"
+              placeholder="Predict My Future" />
+            <input
+              style={{
+                fontSize: '15px',
+                borderRadius: '5px',
+                backgroundColor: 'white'
+              }}
+              type="submit"
+              name="submit"
+            />
         </form>
         <p className="App-intro"
           style={{
