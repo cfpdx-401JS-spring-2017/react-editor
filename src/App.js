@@ -6,7 +6,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      name: 'WRITE YO NAME HERE',
+      name: '',
       color: '#6f5aaa',
     };
     
@@ -27,18 +27,20 @@ class App extends Component {
 
 
   render() {
-
+    const name = this.state.name;
 
     return (
       <div className="editor">
-          <button onClick={() => this.changeColor('ffffff')}>Welcome to the React party!</button>
+          <button onClick={() => this.changeColor('ffffff')}>Welcome to the React party {name}!</button>
         <div className="settings">
           <label>
             Name:
             <input
-              value={this.state.name}
+              value={name}
               onChange={e => this.changeMessage(e.target.value)}/>
           </label>
+          <button onSubmit={() => this.changeMessage(name)}>
+            </button>
           <label>
             Color:
             <input
