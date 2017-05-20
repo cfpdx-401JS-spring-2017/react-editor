@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 class App extends Component {
 
@@ -9,7 +8,6 @@ class App extends Component {
     this.state = {
       name: 'WRITE YO NAME HERE',
       color: '#6f5aaa',
-      title: 'Welcome to my React Party!'
     };
     
   }
@@ -26,24 +24,20 @@ class App extends Component {
     this.setState({ color });
   }
 
+
+
   render() {
 
 
     return (
       <div className="editor">
-          <h2>Welcome to the React party!</h2>
+          <button onClick={() => this.changeColor('ffffff')}>Welcome to the React party!</button>
         <div className="settings">
           <label>
             Name:
             <input
               value={this.state.name}
               onChange={e => this.changeMessage(e.target.value)}/>
-          </label>
-          <label>
-            Title:
-            <input
-            value={this.state.message}
-            onChange={e => this.changeTitle(e.target.value)}/>
           </label>
           <label>
             Color:
