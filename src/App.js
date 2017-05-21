@@ -12,10 +12,6 @@ class App extends Component {
 
   }
 
-  changeTitle(title) {
-    this.setState({ title });
-  }
-
   changeMessage(name) {
     this.setState({ name });
   }
@@ -29,11 +25,10 @@ class App extends Component {
   render() {
     const name = this.state.name;
     const color = this.state.color;
-    const title = this.state.title;
 
     return (
-      <div className="editor">
-        <button onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
+      <div className="name">
+        <button style={{ color: color}} onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
         <div className="settings">
           <label>
             Name:
@@ -51,8 +46,7 @@ class App extends Component {
         </div>
         <div className="display"
           style={{ color: color }}>
-          {name} <br></br>
-          {title}
+          {name}<br/>
         </div>
       </div >
     );
