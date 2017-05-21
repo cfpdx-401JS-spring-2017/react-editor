@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       name: '',
-      color: '#6f5aaa',
+      color: '#aaaaaa',
+      font: 42
     };
 
   }
@@ -20,16 +21,19 @@ class App extends Component {
     this.setState({ color });
   }
 
+  changeFontSize(font) {
+    this.setState({ font });
+  }
+
 
 
   render() {
-    const name = this.state.name;
-    const color = this.state.color;
+    const {name, color, font} = this.state;
 
     return (
-      <div className="name">
-        <button style={{ color: color}} onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
-        <div className="settings">
+      <div className="welcome">
+        <button style={{ color }} onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
+        <div className="name">
           <label>
             Name:
             <input
@@ -39,14 +43,16 @@ class App extends Component {
           <label>
             Color:
             <input
-              type="color"
+              type='color'
               value={color}
               onChange={e => this.changeColor(e.target.value)} />
           </label>
         </div>
-        <div className="display"
-          style={{ color: color }}>
-          {name}<br/>
+        <div className='display' style={{
+          fontSize: `${font}px`, color}}>
+          <input type='range' value={font} 
+            onChange={e => { this.changeFontSize(e.target.value) }} /><br />
+          {name}
         </div>
       </div >
     );
