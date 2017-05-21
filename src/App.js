@@ -9,7 +9,7 @@ class App extends Component {
       name: '',
       color: '#6f5aaa',
     };
-    
+
   }
 
   changeTitle(title) {
@@ -28,33 +28,33 @@ class App extends Component {
 
   render() {
     const name = this.state.name;
+    const color = this.state.color;
+    const title = this.state.title;
 
     return (
       <div className="editor">
-          <button onClick={() => this.changeColor('ffffff')}>Welcome to the React party {name}!</button>
+        <button onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
         <div className="settings">
           <label>
             Name:
             <input
               value={name}
-              onChange={e => this.changeMessage(e.target.value)}/>
+              onChange={e => this.changeMessage(e.target.value)} />
           </label>
-          <button onSubmit={() => this.changeMessage(name)}>
-            </button>
           <label>
             Color:
             <input
               type="color"
-              value={this.state.color}
-              onChange={e => this.changeColor(e.target.value)}/>
+              value={color}
+              onChange={e => this.changeColor(e.target.value)} />
           </label>
         </div>
         <div className="display"
-          style={{ color: this.state.color }}>
-          {this.state.name} <br></br>
-          {this.state.title}
-      </div>
-    </div>
+          style={{ color: color }}>
+          {name} <br></br>
+          {title}
+        </div>
+      </div >
     );
   }
 }
