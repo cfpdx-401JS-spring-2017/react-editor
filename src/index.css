@@ -7,15 +7,11 @@ body {
 button {
   margin: 50px;
   padding: 50px;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 div {
   text-align: center;
-}
-
-settings {
-  
 }
 
 

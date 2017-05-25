@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       name: '',
       color: '#aaaaaa',
-      font: 42
+      font: 42,
+      rotate: 0
     };
 
   }
@@ -25,34 +26,44 @@ class App extends Component {
     this.setState({ font });
   }
 
+  makeRotate(rotation) {
+    this.setState({ rotation });
+  }
+
 
 
   render() {
-    const {name, color, font} = this.state;
+    const {name, color, font, rotation} = this.state;
 
     return (
       <div className="welcome">
         <button style={{ color }} onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
+        <p>Click Above to Randomly Change Font Color!</p>
         <div className="name">
           <label>
-            Name:
+            Enter your Name Here:
             <input
               value={name}
               onChange={e => this.changeMessage(e.target.value)} />
           </label>
           <label>
-            Color:
+            Choose a Color Here:
             <input
               type='color'
               value={color}
               onChange={e => this.changeColor(e.target.value)} />
           </label>
         </div>
+        <p>Change Name-size with the Slider Below!</p>
         <div className='display' style={{
-          fontSize: `${font}px`, color}}>
-          <input type='range' value={font} 
+          fontSize: `${font}px`, color
+        }}>
+          <input type='range' value={font}
             onChange={e => { this.changeFontSize(e.target.value) }} /><br />
-          {name}
+          {name} <br />
+        </div>
+        <div>
+          <button style={{ color }} font-size={'42px'} value={rotation} onClick={() => this.makeRotate({ rotation })}>Click to Spin!</button>
         </div>
       </div >
     );
