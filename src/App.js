@@ -9,7 +9,7 @@ class App extends Component {
       name: '',
       color: '#aaaaaa',
       font: 42,
-      rotate: 0
+      rotation: 0
     };
 
   }
@@ -37,7 +37,12 @@ class App extends Component {
 
     return (
       <div className="welcome">
-        <button style={{ color }} onClick={() => this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}>Welcome to the React party {name}!</button>
+        <button 
+        style={{ color }} 
+        onClick={() => {
+          this.changeColor('#' + Math.floor(Math.random() * 16777215).toString(16))}
+        }>
+        Welcome to the React party {name}!</button>
         <p>Click Above to Randomly Change Font Color!</p>
         <div className="name">
           <label>
@@ -63,7 +68,19 @@ class App extends Component {
           {name} <br />
         </div>
         <div>
-          <button style={{ color }} font-size={'42px'} value={rotation} onClick={() => this.makeRotate({ rotation })}>Click to Spin!</button>
+          <button className='spinner'
+            style={{
+              animation: `rotation infinite ${this.state.rotation}s linear`
+            }}
+            font-size={'42px'} 
+            onClick={() => {
+              this.state.rotation === 0
+                ?
+                this.setState({ rotation: 1 })
+                :
+                this.setState({ rotation: 0 })
+            }}>
+            Click to Spin!</button>
         </div>
       </div >
     );

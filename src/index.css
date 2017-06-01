@@ -14,4 +14,11 @@ div {
   text-align: center;
 }
 
+@keyframes rotation {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+
+
 
